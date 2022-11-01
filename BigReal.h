@@ -21,7 +21,7 @@ protected:
 public:
 	BigReal (double realNumber = 0.0); // Default constructor
 	BigReal (const string& realNumber);
-	//BigReal (const BigDecimalInt& bigInteger);
+	BigReal (const BigReal& bigInteger);
 	BigReal (const BigReal& other);  // Copy constructor
 	BigReal (BigReal&& other);   // Move constructor
 	BigReal& operator= (const BigReal& other); // Assignment operator
