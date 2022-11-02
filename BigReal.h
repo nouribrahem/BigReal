@@ -5,7 +5,7 @@
 #include <regex>
 #include <string>
 #include <algorithm>
-
+#include "BigDecimalIntClass.h"
 using namespace std;
 
 class BigReal
@@ -22,7 +22,7 @@ public:
 	BigReal (double realNumber = 0.0); // Default constructor
 	BigReal (const string& realNumber);
 	BigReal (const BigReal& bigInteger);
-	BigReal (const BigReal& other);  // Copy constructor
+	BigReal (const BigDecimalInt& other);  // Copy constructor
 	BigReal (BigReal&& other);   // Move constructor
 	BigReal& operator= (const BigReal& other); // Assignment operator
 	BigReal& operator= (BigReal&& other); // Move assignment

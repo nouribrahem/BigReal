@@ -2,3 +2,7 @@
 5	939	6890295137571225	CMakeFiles/BigReal.dir/main.cpp.obj	db428526a2d4c305
 0	953	6890295137723305	CMakeFiles/BigReal.dir/BigReal.cpp.obj	88301d3e2caa16fb
 953	1120	6890295139357347	BigReal.exe	6decdd9407cc1b52
+4	1073	6891180829086046	CMakeFiles/BigReal.dir/BigReal.cpp.obj	88301d3e2caa16fb
+14	1075	6891180829086046	CMakeFiles/BigReal.dir/main.cpp.obj	db428526a2d4c305
+9	3714	6891180855333586	CMakeFiles/BigReal.dir/BigDecimalIntClass.cpp.obj	601636eb47afff1b
+3714	5949	6891180877673297	BigReal.exe	53f92b0303825858
