@@ -19,9 +19,9 @@ protected:
 	BigReal addTwoStrNums(const BigReal& anotherDec);
 	BigReal removeZeroes(BigReal& number);
 public:
-	BigReal (double realNumber = 0.0); // Default constructor
+	BigReal (double realNumber); // Default constructor
 	BigReal (const string& realNumber);
-    BigReal (BigDecimalInt bigInteger);
+    BigReal ( BigDecimalInt& bigInteger);
     BigReal (const BigReal& other); // Copy constructor
 	BigReal (BigReal&& other);   // Move constructor
 	BigReal& operator= (const BigReal& other); // Assignment operator

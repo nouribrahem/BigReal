@@ -7,6 +7,10 @@ using namespace std;
 
 int main() {
 
-    cout<< "BEAST TEAM!"<< endl;
+    BigReal z(1.00000);
+    BigReal q("-01111.123456");
+    BigDecimalInt a ("+1111111111");
+    BigReal b (a);
+    //cout<< "BEAST TEAM!"<< endl;
     return 0;
 }
