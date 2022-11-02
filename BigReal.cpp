@@ -23,6 +23,7 @@ BigReal :: BigReal (double realNumber){
 
 }
 BigReal :: BigReal (const string& realNumber){
+    int index = realNumber.find('.');
 
     if (realNumber[0]== '+' || realNumber[0] =='-'){
         numSign = realNumber[0];
