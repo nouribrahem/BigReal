@@ -214,26 +214,25 @@ ostream& operator << (ostream& out, const BigReal& num)
     out << num.wholeNum;
     return out;
 }
-istream& operator >> (istream& out, BigReal& num)
+istream& operator >> (istream& in, BigReal& num)
 {
-    in << num.wholeNum;
-    int index = num.find('.');
-    if (num[0]== '+' || num[0] =='-'){
-        numSign = num[0];
-        wholeNum = num.substr(1);
-        beforePoint = num.substr(1,index-1);
-        afterPoint = num.substr(index+1);
-        beforePointSize = num.substr(1,index-1).size();
-        afterPointSize = num.substr(index+1).size();
+    in >> num.wholeNum;
+    int index = wholeNum.find('.');
+    if (wholeNum[0]== '+' || wholeNum[0] =='-'){
+        numSign = wholeNum[0];
+        wholewholeNum = wholeNum.substr(1);
+        beforePoint = wholeNum.substr(1,index-1);
+        afterPoint = wholeNum.substr(index+1);
+        beforePointSize = wholeNum.substr(1,index-1).size();
+        afterPointSize = wholeNum.substr(index+1).size();
     }
     else{
         numSign ='+';
-        wholeNum = num.substr(0);
-        beforePoint = num.substr(0,index);
-        afterPoint = num.substr(index+1);
-        beforePointSize = num.substr(0,index).size();
-        afterPointSize = num.substr(index+1).size();
+        wholeNum = wholeNum.substr(0);
+        beforePoint = wholeNum.substr(0,index);
+        afterPoint = wholeNum.substr(index+1);
+        beforePointSize = wholeNum.substr(0,index).size();
+        afterPointSize = wholeNum.substr(index+1).size();
     }
     return in;
 }
-
