@@ -43,3 +43,17 @@ BigReal :: BigReal (const string& realNumber){
     }
     cout << numSign << beforePoint << '.'<< afterPoint<< '\n';
 }
+BigReal :: BigReal (BigDecimalInt& bigInteger){
+    afterPoint = "0";
+    beforePoint = bigInteger.getNumber();
+    beforePointSize = beforePoint.size();
+    afterPointSize = afterPoint.size();
+    if(bigInteger.sign()){
+        numSign='+';
+    }
+    else {
+        numSign = '-';
+    }
+    cout << numSign << beforePoint << '.'<< afterPoint<<'\n';
+
+}
