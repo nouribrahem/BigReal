@@ -17,7 +17,7 @@ bool BigReal::isValidStrNum(const string& num)
         return 0;
     }
 }
-BigReal()
+BigReal::BigReal()
 {
     
 }
