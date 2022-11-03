@@ -17,6 +17,7 @@ private:
 protected:
 	bool isValidStrNum(const string& num);
 	BigReal addTwoStrNums(const BigReal& anotherDec);
+	BigReal setBigReal(char& sign, string& number);
 	BigReal removeZeroes(BigReal& number);
 public:
 	BigReal();
