@@ -216,9 +216,20 @@ ostream& operator << (ostream& out, const BigReal& num)
 }
 istream& operator >> (istream& in, BigReal& num)
 {
-    in >> num.wholeNum;
-    BigReal(num.wholeNum);
+    in >> num.numSign >> num.wholeNum;
+    num.setBigReal(num.numSign,num.wholeNum);
     return in;
+}
+BigReal BigReal::setBigReal(char& sign, string& number)
+{
+    this->wholeNum = number;
+    this->numSign = sign;
+    int index = this->wholeNum.find('.');
+    this->beforePoint = this->wholeNum.substr(0,index);
+    this->afterPoint = this->wholeNum.substr(index+1);
+    this->beforePointSize = this->wholeNum.substr(0,index).size();
+    this->afterPointSize = this->wholeNum.substr(index+1).size();
+    return *this;
 }
 
 BigReal BigReal:: operator+ (const BigReal& other)
