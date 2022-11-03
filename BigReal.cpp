@@ -220,3 +220,119 @@ istream& operator >> (istream& in, BigReal& num)
     BigReal(num.wholeNum);
     return in;
 }
+
+BigReal BigReal:: operator+ (const BigReal& other)
+{
+    return addTwoStrNums(other);
+}
+
+BigReal BigReal:: addTwoStrNums(const BigReal& other)
+{
+    BigReal result , firstNum = *this , secondNum = other;
+    result.wholeNum="";
+    int digit , carry = 0;
+    if(firstNum.beforePointSize<secondNum.beforePointSize)
+    {
+        for(int i=0;i<secondNum.beforePointSize-firstNum.beforePointSize;i++)
+        {
+            firstNum.wholeNum.insert(0 , 1 , '0');
+        }
+    }
+    else if(firstNum.beforePointSize>secondNum.beforePointSize)
+    {
+        for(int i=0;i<firstNum.beforePointSize-secondNum.beforePointSize;i++)
+        {
+            secondNum.wholeNum.insert(0 , 1 , '0');
+        }
+    }
+
+    if(firstNum.afterPointSize<secondNum.afterPointSize)
+    {
+        for(int i=0;i<secondNum.afterPointSize-firstNum.afterPointSize;i++)
+        {
+            firstNum.wholeNum.push_back('0');
+        }
+    }
+    else if(firstNum.afterPointSize>secondNum.afterPointSize)
+    {
+        for(int i=0;i<firstNum.afterPointSize-secondNum.afterPointSize;i++)
+        {
+            secondNum.wholeNum.push_back('0');
+        }
+    }
+    cout<<firstNum.wholeNum.size()<<" "<<secondNum.wholeNum.size()<<endl;
+    /////////////////////////////////////////////////////////////////
+
+    if(firstNum.numSign==secondNum.numSign)
+    {
+        for(int i=secondNum.wholeNum.size()-1;i>=0;i--)
+        {
+          if(firstNum.wholeNum[i]=='.')
+          {
+              result.wholeNum.push_back('.');
+              i--;
+          }
+          digit = (firstNum.wholeNum[i]-'0') + (secondNum.wholeNum[i]-'0')+carry;
+          result.wholeNum.push_back(digit%10 + '0');
+          carry = digit/10;
+        }
+        if(carry)
+        {
+            result.wholeNum.push_back(carry + '0');
+        }
+        result.numSign = firstNum.numSign;
+    }
+    else
+    {
+        if(firstNum.wholeNum>secondNum.wholeNum)
+        {
+          result.numSign = firstNum.numSign;
+        }
+        else if(firstNum.wholeNum == secondNum.wholeNum)
+        {
+            result.wholeNum = "0";
+            return result;
+        }
+        else
+        {
+           swap(firstNum.wholeNum,secondNum.wholeNum);
+           result.numSign = secondNum.numSign;
+        }
+        for(int i=secondNum.wholeNum.size()-1;i>=0;i--)
+        {
+            if(firstNum.wholeNum[i]=='.')
+            {
+              result.wholeNum.push_back('.');
+              i--;
+            }
+          digit = (firstNum.wholeNum[i]-'0') - (secondNum.wholeNum[i]-'0')-carry;
+          if(digit<0)
+          {
+              digit += 10;
+              carry = 1;
+          }
+          else
+          {
+              carry = 0;
+          }
+          result.wholeNum.push_back(digit + '0');
+        }
+    }
+    reverse(result.wholeNum.begin() , result.wholeNum.end());
+    return result;
+}
+
+BigReal BigReal:: operator- (const BigReal& other)
+{
+    BigReal NNA = other;
+    if(NNA.numSign == '-')
+    {
+        NNA.numSign = '+';
+    }
+    else
+    {
+        NNA.numSign = '-';
+    }
+    return addTwoStrNums(NNA);
+}
+
