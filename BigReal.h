@@ -5,13 +5,13 @@
 #include <regex>
 #include <string>
 #include <algorithm>
-#include "BigDecimalIntClass.h"
+
 using namespace std;
 
 class BigReal
 {
 private:
-        string beforePoint, afterPoint;
+    	string beforePoint, afterPoint, wholeNum;
 	int beforePointSize, afterPointSize;
 	char numSign;
 protected:
@@ -19,12 +19,13 @@ protected:
 	BigReal addTwoStrNums(const BigReal& anotherDec);
 	BigReal removeZeroes(BigReal& number);
 public:
+	BigReal();
 	BigReal (double realNumber); // Default constructor
 	BigReal (const string& realNumber);
-    BigReal ( BigDecimalInt& bigInteger);
-    BigReal (const BigReal& other); // Copy constructor
+	//BigReal (const BigDecimalInt& bigInteger);
+	BigReal (const BigReal& other);  // Copy constructor
 	BigReal (BigReal&& other);   // Move constructor
-	BigReal& operator= (const BigReal& other); // Assignment operator
+	BigReal operator= (const BigReal& other); // Assignment operator
 	BigReal& operator= (BigReal&& other); // Move assignment
 	BigReal operator+ (const BigReal& other);
 	BigReal operator- (const BigReal& other);
@@ -34,7 +35,7 @@ public:
 	int size();
 	int sign();
 	friend ostream& operator << (ostream& out, const BigReal& num);
-	friend istream& operator >> (istream& out, const BigReal& num);
+	friend istream& operator >> (istream& out, BigReal& num);
 };
 
 
