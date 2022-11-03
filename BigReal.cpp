@@ -217,22 +217,6 @@ ostream& operator << (ostream& out, const BigReal& num)
 istream& operator >> (istream& in, BigReal& num)
 {
     in >> num.wholeNum;
-    int index = wholeNum.find('.');
-    if (wholeNum[0]== '+' || wholeNum[0] =='-'){
-        numSign = wholeNum[0];
-        wholewholeNum = wholeNum.substr(1);
-        beforePoint = wholeNum.substr(1,index-1);
-        afterPoint = wholeNum.substr(index+1);
-        beforePointSize = wholeNum.substr(1,index-1).size();
-        afterPointSize = wholeNum.substr(index+1).size();
-    }
-    else{
-        numSign ='+';
-        wholeNum = wholeNum.substr(0);
-        beforePoint = wholeNum.substr(0,index);
-        afterPoint = wholeNum.substr(index+1);
-        beforePointSize = wholeNum.substr(0,index).size();
-        afterPointSize = wholeNum.substr(index+1).size();
-    }
+    BigReal(num.wholeNum);
     return in;
 }
