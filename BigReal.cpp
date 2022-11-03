@@ -346,4 +346,25 @@ BigReal BigReal:: operator- (const BigReal& other)
     }
     return addTwoStrNums(NNA);
 }
-
+int BigReal::size()
+{
+    if (this->numSign == '-')
+    {
+        return wholeNum.size()+1;
+    }
+    else
+    {
+        return wholeNum.size();
+    }
+}
+int BigReal::sign()
+{
+    if (this->numSign == '+')
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
