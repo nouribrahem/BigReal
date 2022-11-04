@@ -19,7 +19,46 @@ bool BigReal::isValidStrNum(const string& num)
 }
 BigReal::BigReal()
 {
-    
+
+}
+
+BigReal :: BigReal (const BigReal& other){
+    beforePoint = other.beforePoint ;
+    afterPoint = other.afterPoint;
+    wholeNum = other.wholeNum;
+    beforePointSize = other.beforePointSize;
+    afterPointSize = other.afterPointSize;
+    numSign = other.numSign;
+    cout << " copied";
+}
+BigReal& BigReal :: operator=(BigReal&& other) noexcept{
+    if (this != &other) {
+        // Copy the data pointer and its length from the
+        // source object.
+        beforePoint = other.beforePoint ;
+        afterPoint = other.afterPoint;
+        wholeNum = other.wholeNum;
+        beforePointSize = other.beforePointSize;
+        afterPointSize = other.afterPointSize;
+        numSign = other.numSign;
+
+        // Release the data pointer from the source object so that
+    }
+    cout << "assi";
+    return *this;
+}
+BigReal :: BigReal (BigReal&& other)noexcept{
+    *this = other;
+    cout << *this;
+//     other.beforePoint = "" ;
+//     other.afterPoint = "";
+//     other.wholeNum = "";
+//     other.beforePointSize = 0;
+//     other.afterPointSize = 0;
+//     other.numSign = 0;
+    other = NULL;
+    cout << " moved";
+
 }
 BigReal :: BigReal (double realNumber){
     string strReal = to_string(realNumber);
@@ -61,22 +100,22 @@ BigReal :: BigReal (const string& realNumber){
         beforePointSize = realNumber.substr(0,index).size();
         afterPointSize = realNumber.substr(index+1).size();
     }
-    cout << numSign << beforePoint << '.'<< afterPoint<< '\n';
+    //cout << numSign << beforePoint << '.'<< afterPoint<< '\n';
 }
-BigReal :: BigReal (BigDecimalInt& bigInteger){
-    afterPoint = "0";
-    beforePoint = bigInteger.getNumber();
-    beforePointSize = beforePoint.size();
-    afterPointSize = afterPoint.size();
-    if(bigInteger.sign()){
-        numSign='+';
-    }
-    else {
-        numSign = '-';
-    }
-    cout << numSign << beforePoint << '.'<< afterPoint<<'\n';
-
-}
+//BigReal :: BigReal (BigDecimalInt& bigInteger){
+//    afterPoint = "0";
+//    beforePoint = bigInteger.getNumber();
+//    beforePointSize = beforePoint.size();
+//    afterPointSize = afterPoint.size();
+//    if(bigInteger.sign()){
+//        numSign='+';
+//    }
+//    else {
+//        numSign = '-';
+//    }
+//    cout << numSign << beforePoint << '.'<< afterPoint<<'\n';
+//
+//}
 bool BigReal::operator<(const BigReal& anotherReal)
 {
     if (this->numSign == '-' && anotherReal.numSign == '+')
@@ -202,6 +241,7 @@ BigReal BigReal::operator= (const BigReal& other)
     this->numSign = other.numSign;
     this->beforePointSize = other.beforePointSize;
     this->afterPointSize = other.afterPointSize;
+    cout << "char =";
     return *this;
 }
 
