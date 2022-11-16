@@ -1,0 +1,38 @@
+[
+    {
+        "arguments": [
+            "C:\\Program Files\\JetBrains\\CLion 2021.3.2\\bin\\mingw\\bin\\g++.exe",
+            "-IC:/Users/DELL/Documents/GitHub/feilters/BigReal/.",
+            "-g",
+            "-std=gnu++14",
+            "-DPVS_STUDIO",
+            "C:\\Users\\DELL\\Documents\\GitHub\\feilters\\BigReal\\BigDecimalIntClass.cpp"
+        ],
+        "dependencies": [],
+        "id": 1
+    },
+    {
+        "arguments": [
+            "C:\\Program Files\\JetBrains\\CLion 2021.3.2\\bin\\mingw\\bin\\g++.exe",
+            "-IC:/Users/DELL/Documents/GitHub/feilters/BigReal/.",
+            "-g",
+            "-std=gnu++14",
+            "-DPVS_STUDIO",
+            "C:\\Users\\DELL\\Documents\\GitHub\\feilters\\BigReal\\BigReal.cpp"
+        ],
+        "dependencies": [],
+        "id": 2
+    },
+    {
+        "arguments": [
+            "C:\\Program Files\\JetBrains\\CLion 2021.3.2\\bin\\mingw\\bin\\g++.exe",
+            "-IC:/Users/DELL/Documents/GitHub/feilters/BigReal/.",
+            "-g",
+            "-std=gnu++14",
+            "-DPVS_STUDIO",
+            "C:\\Users\\DELL\\Documents\\GitHub\\feilters\\BigReal\\main.cpp"
+        ],
+        "dependencies": [],
+        "id": 3
+    }
+]

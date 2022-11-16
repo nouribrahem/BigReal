@@ -1,10 +1,12 @@
+// FCAI –CS213: Object Oriented Programming – 2022 - Assignment 2 - task 1
+// Program Name: A2_task1_S23_20210059_20210424_20210436_BigReal.cpp
+// Last Modification Date: 15/11/2022
+// Author1 and ID and Section: Nahla Hesham Moustafa           20210424        S23
+// Author2 and ID and Section: Arwa Elsaadawy Abdellatif       20210059        S23
+// Author3 and ID and Section: Nourhan Elsayed Hassan          20210436        S23
+// Purpose: develop a new C++ type (class) that can hold unlimited Real numbers values and performs arithmetic operations on them.
 #include "BigReal.h"
 #include "BigDecimalIntClass.h"
-
-//string beforePoint, afterPoint;
-//int beforePointSize, afterPointSize;
-//char numSign;
-
 bool BigReal::isValidStrNum(const string& num)
 {
     regex match("[+-]?[0-9]?[.][0-9]+");
@@ -29,12 +31,9 @@ BigReal :: BigReal (const BigReal& other){
     beforePointSize = other.beforePointSize;
     afterPointSize = other.afterPointSize;
     numSign = other.numSign;
-    cout << " copied";
 }
 BigReal& BigReal :: operator=(BigReal&& other) noexcept{
     if (this != &other) {
-        // Copy the data pointer and its length from the
-        // source object.
         beforePoint = other.beforePoint ;
         afterPoint = other.afterPoint;
         wholeNum = other.wholeNum;
@@ -42,23 +41,13 @@ BigReal& BigReal :: operator=(BigReal&& other) noexcept{
         afterPointSize = other.afterPointSize;
         numSign = other.numSign;
 
-        // Release the data pointer from the source object so that
     }
-    cout << "assi";
     return *this;
 }
 BigReal :: BigReal (BigReal&& other)noexcept{
     *this = other;
     cout << *this;
-//     other.beforePoint = "" ;
-//     other.afterPoint = "";
-//     other.wholeNum = "";
-//     other.beforePointSize = 0;
-//     other.afterPointSize = 0;
-//     other.numSign = 0;
     other = NULL;
-    cout << " moved";
-
 }
 BigReal :: BigReal (double realNumber){
     string strReal = to_string(realNumber);
@@ -78,12 +67,10 @@ BigReal :: BigReal (double realNumber){
         beforePointSize = strReal.substr(0,index).size();
         afterPointSize = strReal.substr(index+1).size();
     }
-    cout << numSign << beforePoint << '.'<< afterPoint<<'\n';
 
 }
 BigReal :: BigReal (const string& realNumber){
     int index = realNumber.find('.');
-//+12.2345
     if (realNumber[0]== '+' || realNumber[0] =='-'){
         numSign = realNumber[0];
         wholeNum = realNumber.substr(1);
@@ -100,22 +87,20 @@ BigReal :: BigReal (const string& realNumber){
         beforePointSize = realNumber.substr(0,index).size();
         afterPointSize = realNumber.substr(index+1).size();
     }
-    //cout << numSign << beforePoint << '.'<< afterPoint<< '\n';
 }
-//BigReal :: BigReal (BigDecimalInt& bigInteger){
-//    afterPoint = "0";
-//    beforePoint = bigInteger.getNumber();
-//    beforePointSize = beforePoint.size();
-//    afterPointSize = afterPoint.size();
-//    if(bigInteger.sign()){
-//        numSign='+';
-//    }
-//    else {
-//        numSign = '-';
-//    }
-//    cout << numSign << beforePoint << '.'<< afterPoint<<'\n';
-//
-//}
+BigReal :: BigReal ( BigDecimalInt& bigInteger){
+    afterPoint = "0";
+    beforePoint = bigInteger.getNumber();
+    beforePointSize = beforePoint.size();
+    afterPointSize = afterPoint.size();
+    if(bigInteger.sign()){
+        numSign='+';
+    }
+    else {
+        numSign = '-';
+    }
+
+}
 bool BigReal::operator<(const BigReal& anotherReal)
 {
     if (this->numSign == '-' && anotherReal.numSign == '+')
@@ -213,8 +198,6 @@ bool BigReal::operator>(const BigReal& anotherReal)
     return (cpy < *this);
 }
 
-// 1.55 1.550
-
 bool BigReal::operator==(const BigReal& anotherReal)
 {
     if (this->beforePointSize == anotherReal.beforePointSize && this->afterPointSize == anotherReal.afterPointSize)
@@ -311,8 +294,6 @@ BigReal BigReal:: addTwoStrNums(const BigReal& other)
             secondNum.wholeNum.push_back('0');
         }
     }
-    cout<<firstNum.wholeNum.size()<<" "<<secondNum.wholeNum.size()<<endl;
-    /////////////////////////////////////////////////////////////////
 
     if(firstNum.numSign==secondNum.numSign)
     {
